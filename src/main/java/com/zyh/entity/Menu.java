@@ -3,12 +3,15 @@ package com.zyh.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.zyh.vo.RouterVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author zyh
@@ -24,6 +27,8 @@ public class Menu implements Serializable {
 
     @TableId
     private Long id;
+
+    private Long parentId;
     /**
      * 菜单名
      */
@@ -68,4 +73,7 @@ public class Menu implements Serializable {
      * 备注
      */
     private String remark;
+
+    //子菜单
+    private List<Menu> children = new ArrayList<Menu>();
 }

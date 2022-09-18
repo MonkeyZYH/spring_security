@@ -1,5 +1,10 @@
 package com.zyh.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -7,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @Author zyh
  * @Date 2022/9/17 14:14
  */
+@Configuration
 public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -17,10 +23,11 @@ public class CorsConfig implements WebMvcConfigurer {
                 // 是否允许cookie
                 .allowCredentials(true)
                 // 设置允许的请求方式
-                .allowedMethods("GET", "POST", "DELETE", "PUT")
+                .allowedMethods("*")
                 // 设置允许的header属性
                 .allowedHeaders("*")
                 // 跨域允许时间
                 .maxAge(3600);
     }
 }
+

@@ -23,6 +23,11 @@ public class LoginController {
         return loginService.login(user);
     }
 
+    @GetMapping("/getInfo")
+    public Result getInfo(){
+        return loginService.getInfo();
+    }
+
     @GetMapping("/logout")
     public Result logout(){
         return loginService.logout();

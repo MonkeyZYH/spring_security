@@ -10,5 +10,9 @@ import com.zyh.entity.User;
 public interface LoginService {
     Result login(User user);
 
+    Result getInfo();
+
     Result logout();
+
+    Result getMenuList();
 }
