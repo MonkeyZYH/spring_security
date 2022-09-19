@@ -1,5 +1,6 @@
 package com.zyh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -80,5 +81,6 @@ public class Menu implements Serializable {
     private String remark;
 
     //子菜单
+    @TableField(exist = false)
     private List<Menu> children = new ArrayList<Menu>();
 }

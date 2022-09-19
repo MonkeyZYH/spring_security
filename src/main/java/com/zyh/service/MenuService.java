@@ -25,4 +25,11 @@ public interface MenuService extends IService<Menu> {
      * @return
      */
     List<Menu> findMenuParentList();
+
+    /**
+     * 检查菜单是否有子菜单
+     * @param id
+     * @return
+     */
+    boolean hasChildrenOfMenu(Long id);
 }
