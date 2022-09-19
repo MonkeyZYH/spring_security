@@ -1,11 +1,15 @@
 package com.zyh;
 
 import com.zyh.config.SecurityConfig;
+import com.zyh.entity.Menu;
 import com.zyh.mapper.MenuMapper;
+import com.zyh.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 @SpringBootTest
 class SpringSecurityApplicationTests {
@@ -14,6 +18,8 @@ class SpringSecurityApplicationTests {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private MenuMapper menuMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     void contextLoads() {
@@ -28,5 +34,8 @@ class SpringSecurityApplicationTests {
     void selectPermsByUserId(){
         System.out.println(menuMapper.selectPermsByUserId(1L));
     }
-
+    @Test
+    void find1(){
+        System.out.println(menuMapper.findMenuListByUserId(1L));
+    }
 }

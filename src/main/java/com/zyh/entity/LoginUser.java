@@ -1,6 +1,7 @@
 package com.zyh.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -23,6 +25,12 @@ public class LoginUser implements UserDetails {
     private User user;
 
     private List<String> permissions;
+
+    @TableField(exist = false)
+    private List<Menu> menuList;
+
+    @TableField(exist = false)
+    Collection<? extends GrantedAuthority> authorities1;
 
     public LoginUser(User user,List<String> permissions) {
         this.user = user;

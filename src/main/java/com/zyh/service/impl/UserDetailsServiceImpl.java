@@ -1,11 +1,14 @@
 package com.zyh.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.zyh.entity.LoginUser;
-import com.zyh.entity.User;
+import com.zyh.entity.*;
 import com.zyh.mapper.MenuMapper;
 import com.zyh.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +18,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author zyh
@@ -38,9 +42,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new RuntimeException("用户名或密码错误");
         }
 
-//        List<String> list=new ArrayList<>(Arrays.asList("test","admin"));
-
         List<String> list = menuMapper.selectPermsByUserId(user.getId());
         return new LoginUser(user,list);
     }
+
 }

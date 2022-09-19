@@ -37,6 +37,11 @@ public class Menu implements Serializable {
      * 路由地址
      */
     private String path;
+
+    /**
+     * 路由名称
+     */
+    private String name;
     /**
      * 组件路径
      */

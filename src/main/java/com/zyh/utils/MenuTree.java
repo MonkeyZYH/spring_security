@@ -30,12 +30,13 @@ public class MenuTree {
         //创建集合保存路由信息
         List<RouterVo> routerVoList = new ArrayList<>();
         //判断菜单列表是否为空，如果不为空则使用菜单列表，否则创建集合对象
-        Optional.ofNullable(menuList).orElse(new ArrayList<Menu>())
+        Optional.ofNullable(menuList).orElse(new ArrayList<>())
                 //筛选不为空的菜单及菜单父id相同的数据
                 .stream().filter(item -> item != null && Objects.equals(item.getParentId(), pid))
                 .forEach(item -> {
                     RouterVo routerVo = new RouterVo();
-                    routerVo.setName(item.getPath());//路由名称
+                    routerVo.setName(item.getName());//路由名称
+                    routerVo.setPath(item.getPath());//路由地址
                     //判断是否是一级菜单
                     if (item.getParentId() == 0L) {
                         routerVo.setComponent("Layout");//一级菜单组件
