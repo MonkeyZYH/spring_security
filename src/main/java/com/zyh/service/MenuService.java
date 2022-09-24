@@ -3,6 +3,7 @@ package com.zyh.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zyh.entity.Menu;
 import com.zyh.vo.MenuVo;
+import com.zyh.vo.RoleMenuVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -32,4 +33,12 @@ public interface MenuService extends IService<Menu> {
      * @return
      */
     boolean hasChildrenOfMenu(Long id);
+
+    /**
+     * 查询权限菜单树
+     * @param userId
+     * @param roleId
+     * @return
+     */
+    RoleMenuVo findMenuTree(Long userId,Long roleId);
 }

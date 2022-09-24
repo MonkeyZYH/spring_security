@@ -48,7 +48,7 @@ public class MenuController {
         return Result.fail(ErrorCode.PARAMS_ERROR.getCode(), "菜单修改失败!");
     }
 
-    @PutMapping("/update/{id}")
+    @DeleteMapping("/delete/{id}")
     public Result delete(@PathVariable Long id){
         if (menuService.removeById(id)){
             return Result.success("菜单删除成功!");

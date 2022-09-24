@@ -1,7 +1,9 @@
 package com.zyh;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zyh.config.SecurityConfig;
 import com.zyh.entity.Menu;
+import com.zyh.entity.User;
 import com.zyh.mapper.MenuMapper;
 import com.zyh.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
@@ -37,5 +39,7 @@ class SpringSecurityApplicationTests {
     @Test
     void find1(){
         System.out.println(menuMapper.findMenuListByUserId(1L));
+//        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+//        System.out.println(queryWrapper.eq(User::getId, 1));
     }
 }

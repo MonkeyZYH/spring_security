@@ -30,6 +30,12 @@ public class Menu implements Serializable {
     private Long id;
 
     private Long parentId;
+
+    /**
+     * 父权限名称
+     */
+    private String parentName;
+
     /**
      * 菜单名
      */
@@ -63,6 +69,8 @@ public class Menu implements Serializable {
      * 菜单图标
      */
     private String icon;
+
+    private Integer type;
 
     private Long createBy;
 

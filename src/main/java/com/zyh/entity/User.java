@@ -64,7 +64,7 @@ public class User implements Serializable {
     /**
     * 用户类型（0管理员，1普通用户）
     */
-    private String userType;
+    private Integer userType;
     /**
     * 创建人的用户id
     */

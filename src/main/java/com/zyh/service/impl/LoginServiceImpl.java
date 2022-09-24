@@ -103,7 +103,7 @@ public class LoginServiceImpl implements LoginService {
 
         List<Menu> menuList1=menuMapper.findMenuListByUserId(user.getUser().getId());
         List<String> collect1 = menuList1.stream()
-                .filter(item -> item != null)
+                .filter(item -> item != null && item.getType() !=2)
                 .map(item -> item.getPerms()).filter(item -> item != null)
                 .collect(Collectors.toList());
 
