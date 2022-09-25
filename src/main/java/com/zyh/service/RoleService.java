@@ -6,6 +6,8 @@ import com.zyh.entity.Role;
 import com.zyh.vo.RoleVo;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Author zyh
  * @Date 2022/9/22 17:50
@@ -34,4 +36,12 @@ public interface RoleService extends IService<Role> {
      * @return
      */
     boolean deleteRoleById(Long id);
+
+    /**
+     * 保存角色权限关系
+     * @param roleId
+     * @param permissionIds
+     * @return
+     */
+    boolean saveRoleMenu(Long roleId, List<Long> menuIds);
 }

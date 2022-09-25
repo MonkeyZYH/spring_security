@@ -5,6 +5,8 @@ import com.zyh.entity.Role;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * @Author zyh
  * @Date 2022/9/22 17:48
@@ -25,4 +27,6 @@ public interface RoleMapper extends BaseMapper<Role> {
      */
     @Delete("delete from sys_role_menu where role_id=#{id}")
     void deleteRoleMenuByRoleId(Long id);
+
+    int saveRoleMenu(Long roleId, List<Long> menuIds);
 }

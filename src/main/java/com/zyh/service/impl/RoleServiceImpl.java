@@ -11,7 +11,10 @@ import com.zyh.service.RoleService;
 import com.zyh.vo.RoleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
+
+import java.util.List;
 
 /**
  * @Author zyh
@@ -45,5 +48,14 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         baseMapper.deleteRoleMenuByRoleId(id);
         //删除角色
         return baseMapper.deleteById(id)>0;
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public boolean saveRoleMenu(Long roleId, List<Long> menuIds) {
+        //删除角色权限关系
+        baseMapper.deleteRoleMenuByRoleId(roleId);
+        //保存角色权限关系
+        return baseMapper.saveRoleMenu(roleId,menuIds)>0;
     }
 }

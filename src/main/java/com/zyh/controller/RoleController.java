@@ -1,6 +1,7 @@
 package com.zyh.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zyh.DTO.RoleMenuDTO;
 import com.zyh.entity.ErrorCode;
 import com.zyh.entity.Result;
 import com.zyh.entity.Role;
@@ -83,5 +84,21 @@ public class RoleController {
         RoleMenuVo menuTree = menuService.findMenuTree(userId, roleId);
         //返回数据
         return Result.success(menuTree);
+    }
+
+    /**
+     * 分配权限-保存权限数据
+     *
+     * @param roleMenuDTO
+     * @return
+     */
+    @PostMapping("/saveRoleAssign")
+    public Result saveRoleAssign(@RequestBody RoleMenuDTO roleMenuDTO) {
+        if (roleService.saveRoleMenu(roleMenuDTO.getRoleId(),
+                roleMenuDTO.getList())) {
+            return Result.success("权限分配成功");
+        } else {
+            return Result.fail(ErrorCode.PARAMS_ERROR.getCode(), "权限分配失败");
+        }
     }
 }
